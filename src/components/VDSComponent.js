@@ -54,6 +54,42 @@ const BottonIconBar = ({ paths }) => {
   );
 };
 
+const VersionSelector = () => (
+  <div className="p-4 text-gray-500">
+    <h3 className="text-lg font-semibold">Select Version Change</h3>
+    <div className="text-3xl text-gray-900 font-semibold flex justify-center space-x-4 my-4">
+     <label className="flex flex-col items-center space-x-2">
+        <input type="radio" name="version" className="form-radio  h-3 w-3" id="major" />
+        <div className="border p-4 rounded-lg border-2 cursor-pointer px-3 py-1 rounded-full bg-black text-xl text-white" htmlFor="major">Major</div>
+        <span className="text-xs text-gray-600">recommended</span>
+      </label>
+      <label className="flex flex-col items-center space-x-2">
+        <input type="radio" name="version" className="form-radio  h-3 w-3" id="minor" />
+        <div className="border p-4 rounded-lg border-2 cursor-pointer px-3 py-1 rounded-full bg-gray-300 text-xl text-white" htmlFor="major">Minor</div>
+        <span className="text-xs text-gray-600"></span>
+      </label>
+      <label className="flex flex-col items-center space-x-2">
+        <input type="radio" name="version" className="form-radio  h-3 w-3" id="patch" />
+        <div className="border p-4 rounded-lg border-2 cursor-pointer px-3 py-1 rounded-full bg-gray-300 text-xl text-white" htmlFor="major">Patch</div>
+        <span className="text-xs text-gray-600"></span>
+      </label>
+    </div>
+    <p className="text-sm text-gray-600">Top Changes Affecting Version Recommendation</p>
+    <ul className="text-lg mt-2 space-y-2">
+      <li className="bg-gray-100 p-2 rounded">
+        <span className="text-black">•</span> The color has changed, certain text may no longer be legible on this background
+      </li>
+      <li className="bg-gray-100 p-2 rounded">
+        <span className="text-black">•</span> The border radius has changed, this may do something that looks bad somewhere
+      </li>
+      <li className="bg-gray-100 p-2 rounded">
+        <span className="text-black">•</span> The drop shadow was added, this may produce strange effects on some designs
+      </li>
+    </ul>
+    <a href="#" className="text-blue-600 underline text-sm mt-4 block">See full report</a>
+    <p className="text-xs text-gray-500 mt-2">Uses AI analysis, and may have some inaccuracies.</p>
+  </div>
+);
 
 const VDSComponent = () => {
   const [breadthSignalsData, setBreadthSignalsData] = useState({});
@@ -105,6 +141,7 @@ const VDSComponent = () => {
 
   return (
     <div className="bg-white border rounded-lg shadow-md p-4 w-full max-w-md">
+
       <div className="flex justify-between items-center">
         <span className="text-2xl text-gray-500 font-semibold flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" className="w-5 h-5 mr-1">
@@ -113,7 +150,16 @@ const VDSComponent = () => {
         </span>
         <h2 className="text-xl text-gray-900 font-semibold">Signal • Breaking Changes</h2>
       </div>
+
       <hr className="pt-2 mt-4"/>
+
+      <div className="text-gray-900 flex items-center px-4 py-2">
+      <span className="text-xl  mr-2 cursor-pointer">
+         &lt;
+      </span>
+      <h1 className="text-xl font-semibold m-0">VDSCore Changes</h1>
+      </div>
+
       <div className="py-2 flex justify-between items-center">
         <h2 className="text-xl text-gray-900 font-semibold">{componentName}</h2>
         <span className={`text-xl ${generalSignalIcon?.color || 'text-gray-900'} font-semibold flex items-center`}>
@@ -129,6 +175,7 @@ const VDSComponent = () => {
           <Card key={index} card={card} />
         ))}
       </div>
+      <VersionSelector />
       <hr className="pt-2 mt-4"/>
       <BottonIconBar paths={bottonIconSvgPaths} />
     </div>
