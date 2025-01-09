@@ -1,15 +1,25 @@
 import './App.css';
 import React, { useEffect, useState } from "react";
 import VDSComponentDetail from './components/VDSComponentDetail.';
-import VDSComponentMain from './components/VDSComponentMain';         
+import VDSComponentMain from './components/VDSComponentMain';
 import VDSComponentContainer from './components/VDSComponentContainer'; 
-
 import { VDSComponentInfo, VDSCorePackage } from "./models/breadthSignals";
 import { fetchVDSCorePackageData } from "../src/services/breadthSignalsService";
 
-
 const App: React.FC = () => {
+  const [activeComponent, setActiveComponent] = useState<"main" | "detail">("main");
+  const [selectedDetail, setSelectedDetail] = useState<VDSComponentInfo | null>(null);
   const [VDSCorePackageData, setVDSCorePackageData] = useState<VDSCorePackage>();
+
+  const handleSetDetail = (version: VDSComponentInfo) => {
+    setSelectedDetail(version);
+    setActiveComponent("detail");
+  };
+
+  const handleGoBack = () => {
+    setActiveComponent("main");
+    setSelectedDetail(null);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,24 +33,14 @@ const App: React.FC = () => {
 
     fetchData(); // Call the correctly named function
   }, []);
-  
+
   return (
     <div className="App">
       <header className="App-header">
-
-        {/* Render the VDSComponentContainer alone with no  child component}
-        <VDSComponentContainer childComponent={undefined} />*/}
-
-
-        {/* Render the VDSComponentContainer alone with a VDSComponentMain as a child />*/}
-        <VDSComponentContainer childComponent={<VDSComponentMain />} /> 
-
-        {/* Render the VDSComponentContainer alone with a VDSComponentDetail as a child */}
-        <VDSComponentContainer childComponent={<VDSComponentDetail {...VDSCorePackageData?.toVersions[1]} />} /> 
-        
-        {/* Render the VDSComponentDetail */}
-       {/*<VDSComponentDetail {...mockComponentInfo} />*/}
-        {/* Pass the VDSComponentDetail component to VDSComponentContainer */}
+        {activeComponent === "main" && <VDSComponentContainer childComponent={<VDSComponentMain onSetDetail={handleSetDetail} /> } />  }
+        {activeComponent === "detail" && selectedDetail && (
+          <VDSComponentContainer childComponent={<VDSComponentDetail componentInfo={selectedDetail} onGoBack={handleGoBack} />} />
+        )}
       </header>
     </div>
   );

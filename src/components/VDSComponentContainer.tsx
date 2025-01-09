@@ -12,6 +12,10 @@ const VDSComponentContainer: React.FC<VDSComponentContainerProps> = ({ childComp
     "M3 4h18v18H3V4zM16 2v4M8 2v4M3 10h18",
   ];
 
+  const handleIconClick = (index: number) => {
+    console.log(`Button ${index + 1} clicked.`);
+  };
+
   return (
     <div className="bg-white border rounded-lg shadow-md p-4 w-full max-w-md">
       <div className="flex justify-between items-center">
@@ -43,7 +47,8 @@ const VDSComponentContainer: React.FC<VDSComponentContainerProps> = ({ childComp
             stroke="currentColor"
             strokeWidth="2"
             viewBox="0 0 24 24"
-            className="w-5 h-5 hover:text-blue-500 hover:shadow-4xl transition-all duration-300"
+            className="w-5 h-5 hover:text-blue-500 hover:shadow-4xl transition-all duration-300 cursor-pointer"
+            onClick={() => handleIconClick(index)} // Add the onClick handler here
           >
             <path d={path} />
           </svg>

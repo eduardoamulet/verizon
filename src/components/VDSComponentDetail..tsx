@@ -2,6 +2,11 @@ import React from "react";
 
 import { VDSComponentSignal, VDSComponentInfo} from "../models/breadthSignals";
 
+interface VDSComponentDetailProps {
+  componentInfo: VDSComponentInfo;
+  onGoBack: () => void;
+}
+
 const Card: React.FC<VDSComponentSignal> = ({
   title,
   partialRatio1,
@@ -27,62 +32,90 @@ const Card: React.FC<VDSComponentSignal> = ({
   );
 };
 
-const VersionSelector: React.FC = () => (
-  <div className="p-4 text-gray-500">
-    <h3 className="text-lg font-semibold">Select Version Change</h3>
-    <div className="text-3xl text-gray-900 font-semibold flex justify-center space-x-4 my-4">
-      <label className="flex flex-col items-center space-x-2">
-        <input type="radio" name="version" className="form-radio h-3 w-3" id="major" />
-        <div className="border p-4 rounded-lg border-2 cursor-pointer px-3 py-1 rounded-full bg-black text-xl text-white">Major</div>
-        <span className="text-xs text-gray-600">recommended</span>
-      </label>
-      <label className="flex flex-col items-center space-x-2">
-        <input type="radio" name="version" className="form-radio h-3 w-3" id="minor" />
-        <div className="border p-4 rounded-lg border-2 cursor-pointer px-3 py-1 rounded-full bg-gray-300 text-xl text-white">Minor</div>
-      </label>
-      <label className="flex flex-col items-center space-x-2">
-        <input type="radio" name="version" className="form-radio h-3 w-3" id="patch" />
-        <div className="border p-4 rounded-lg border-2 cursor-pointer px-3 py-1 rounded-full bg-gray-300 text-xl text-white">Patch</div>
-      </label>
+const VersionSelector: React.FC = () => {
+  const handleRadioClick = (versionType: string) => {
+    console.log(`${versionType} button clicked`);
+  };
+
+  return (
+    <div className="p-4 text-gray-500">
+      <h3 className="text-lg font-semibold">Select Version Change</h3>
+      <div className="text-3xl text-gray-900 font-semibold flex justify-center space-x-4 my-4">
+        <label className="flex flex-col items-center space-x-2">
+          <input
+            type="radio"
+            name="version"
+            className="form-radio h-3 w-3"
+            id="major"
+            onClick={() => handleRadioClick("Major")}
+          />
+          <div className="border p-4 rounded-lg border-2 cursor-pointer px-3 py-1 rounded-full bg-black text-xl text-white">
+            Major
+          </div>
+          <span className="text-xs text-gray-600">recommended</span>
+        </label>
+        <label className="flex flex-col items-center space-x-2">
+          <input
+            type="radio"
+            name="version"
+            className="form-radio h-3 w-3"
+            id="minor"
+            onClick={() => handleRadioClick("Minor")}
+          />
+          <div className="border p-4 rounded-lg border-2 cursor-pointer px-3 py-1 rounded-full bg-gray-300 text-xl text-white">
+            Minor
+          </div>
+        </label>
+        <label className="flex flex-col items-center space-x-2">
+          <input
+            type="radio"
+            name="version"
+            className="form-radio h-3 w-3"
+            id="patch"
+            onClick={() => handleRadioClick("Patch")}
+          />
+          <div className="border p-4 rounded-lg border-2 cursor-pointer px-3 py-1 rounded-full bg-gray-300 text-xl text-white">
+            Patch
+          </div>
+        </label>
+      </div>
+      <p className="text-sm text-gray-600">Top Changes Affecting Version Recommendation</p>
+      <ul className="text-lg mt-2 space-y-2">
+        <li className="bg-gray-100 p-2 rounded">
+          <span className="text-black">•</span> The color has changed, certain text may no longer be legible on this
+          background
+        </li>
+        <li className="bg-gray-100 p-2 rounded">
+          <span className="text-black">•</span> The border radius has changed, this may do something that looks bad
+          somewhere
+        </li>
+        <li className="bg-gray-100 p-2 rounded">
+          <span className="text-black">•</span> The drop shadow was added, this may produce strange effects on some
+          designs
+        </li>
+      </ul>
+      <a
+        href="#"
+        className="text-blue-600 underline text-sm mt-4 block focus:outline-none focus:ring-2 focus:ring-blue-400"
+        onClick={(e) => {
+          e.preventDefault(); // Prevent default anchor behavior
+          console.log("See full report Link clicked!"); // Replace with actual navigation logic
+        }}
+        aria-label="View detailed report"
+      >
+        See full report
+      </a>
+      <p className="text-sm text-gray-500 mt-2">Uses AI analysis, and may have some inaccuracies.</p>
     </div>
-    <p className="text-sm text-gray-600">Top Changes Affecting Version Recommendation</p>
-    <ul className="text-lg mt-2 space-y-2">
-      <li className="bg-gray-100 p-2 rounded">
-        <span className="text-black">•</span> The color has changed, certain text may no longer be legible on this background
-      </li>
-      <li className="bg-gray-100 p-2 rounded">
-        <span className="text-black">•</span> The border radius has changed, this may do something that looks bad somewhere
-      </li>
-      <li className="bg-gray-100 p-2 rounded">
-        <span className="text-black">•</span> The drop shadow was added, this may produce strange effects on some designs
-      </li>
-    </ul>
-    <a href="#" className="text-blue-600 underline text-sm mt-4 block">See full report</a>
-    <p className="text-xs text-gray-500 mt-2">Uses AI analysis, and may have some inaccuracies.</p>
-  </div>
-);
+  );
+};
 
-  const VDSComponentDetail: React.FC<VDSComponentInfo> = (componentInfo) => {
-   // const [VDSComponentInfoData, setVDSComponentInfoData] = useState<VDSComponentInfo>();
-  
-    /*useEffect(() => {
-      const fetchAndProcessData = async () => {
-        try {
-          const id = 1; // Hardcode for now
-          const data = await fetchVDSComponentInfoById(VDSComponentId);
-  
-          setVDSComponentInfoData(data);
-  
-        } catch (error) {
-          console.error("Error fetching breadth signals data:", error);
-        }
-      };
-  
-      fetchAndProcessData();
-    }, []);*/
-  
-  // setVDSComponentInfoData(componentInfo);
 
+  const VDSComponentDetail: React.FC<VDSComponentDetailProps> = ({
+    componentInfo,
+    onGoBack,
+  }) => {
+   
   if (!componentInfo) {
      throw new Error("componentInfo is undefined");
   }
@@ -93,9 +126,12 @@ const VersionSelector: React.FC = () => (
     <div className="bg-white w-full max-w-md">
 
       {/* link to gp back to VDSComponentMain*/}
-      <div>
-        <h3 className="text-gray-500 font-semibold mb-2 flex justify-lef">&lt; VDS Core Changes</h3>
-      </div>
+      <h3
+        className="text-xl text-gray-500 font-bold mb-2 font-semibold mb-2 flex justify-left cursor-pointer"
+        onClick={onGoBack}
+      >
+        &lt; VDS Core Changes  
+      </h3>
 
       <div className="py-2 flex justify-between items-center">
         <h2 className="text-xl text-gray-900 font-semibold">{name}</h2>

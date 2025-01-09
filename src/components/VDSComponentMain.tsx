@@ -3,7 +3,11 @@ import { fetchVDSCorePackageData } from "../services/breadthSignalsService";
 import { VDSCorePackage, VDSComponentInfo } from "../models/breadthSignals";
 import VDSComponentDetail from "./VDSComponentDetail.";
 
-const VDSComponentMain: React.FC = () => {
+interface VDSComponentMainProps {
+  onSetDetail: (version: VDSComponentInfo) => void;
+}
+
+const VDSComponentMain: React.FC<VDSComponentMainProps> = ({ onSetDetail }) => {
   const [VDSCorePackageData, setVDSCorePackageData] = useState<VDSCorePackage>();
   const [selectedVersion, setSelectedVersion] = useState<VDSComponentInfo | null>(null);
 
@@ -25,18 +29,29 @@ const VDSComponentMain: React.FC = () => {
     fetchAndProcessData();
   }, []);
 
+  const handleGoBack = () => {
+    setSelectedVersion(null); // Reset selected version to go back
+  };
+
   if (!VDSCorePackageData) {
-    // Show a loading state while the data is being fetched
-    return <div>Loading...</div>;
+    return <div>No data to be shown</div>;
   }
 
   return (
     <div className="bg-white">
+      {selectedVersion ? (
+        // Render the detail view if a version is selected
+        <VDSComponentDetail componentInfo={selectedVersion} onGoBack={handleGoBack} />
+      ) : (
+        // Render the main view with available versions
+        <>
+<div className="bg-white">
       {/* VDS Core Package version */}
       <div>
-        <h3 className="text-gray-500 font-semibold mb-2">VDS Core Package</h3>
-        <h4 className="text-gray-500 mb-2">{VDSCorePackageData.versionNumber}</h4>
+        <h3 className="text-2xl text-gray-500 font-bold mb-2">VDS Core Package</h3>
+        <h4 className="text-2xl text-gray-500 mb-2 font-semibold ">{VDSCorePackageData.versionNumber}</h4>
       </div>
+      <hr className="pt-2 mt-4" />
 
       {/* To Version Section */}
       <div>
@@ -46,8 +61,8 @@ const VDSComponentMain: React.FC = () => {
             key={version.id}
             className="flex items-center justify-between border-b pb-2 mb-2"
           >
-            <div className="flex items-center space-x-2">
-              <span className="font-bold text-gray-500">{version.name}</span>
+            <div className={`flex items-center space-x-2 ${version.icon?.color || "text-gray-900"}`}>
+              <span className="text-xl text-gray-500 font-bold mb-2 font-semibold ">{version.name}</span>
               <span className="text-sm text-gray-500">{version.versionNumber}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -72,13 +87,6 @@ const VDSComponentMain: React.FC = () => {
         ))}
       </div>
 
-      {/* Render VDSComponentDetail for the selected version */}
-      {selectedVersion && (
-        <div className="mt-8">
-          <VDSComponentDetail {...selectedVersion} />
-        </div>
-      )}
-
       {/* Versioned Changes Section */}
       <div>
         <h3 className="text-gray-500 font-semibold text-lg mb-2 flex justify-left">Versioned Changes</h3>
@@ -88,7 +96,7 @@ const VDSComponentMain: React.FC = () => {
             className="flex items-center justify-between border-b pb-2 mb-2"
           >
             <div className="flex items-center space-x-2">
-              <span className="font-bold text-gray-500">{change.name}</span>
+              <span className="text-xl text-gray-500 font-bold mb-2 font-semibold ">{change.name}</span>
               <span className="text-sm text-gray-500">{change.versionNumber}</span>
               <span className={`text-lg font-semibold  ${change.icon?.color}`}>
                 {change.status}
@@ -115,6 +123,10 @@ const VDSComponentMain: React.FC = () => {
           <button className="px-4 py-2 bg-black text-white rounded-lg text-sm">Publish</button>
         </div>
       </div>
+    </div>
+  );
+        </>
+      )}
     </div>
   );
 };
