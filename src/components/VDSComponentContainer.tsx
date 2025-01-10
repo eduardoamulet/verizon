@@ -17,16 +17,16 @@ const VDSComponentContainer: React.FC<VDSComponentContainerProps> = ({ childComp
   };
 
   return (
-    <div className="bg-white border rounded-lg shadow-md p-4 w-full max-w-md">
-      <div className="flex justify-between items-center">
+    <div className="bg-white border rounded-lg shadow-md p-4 w-full max-w-lg">
+      <div className="flex justify-items-start">
         <span className="text-2xl text-gray-500 font-semibold flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" className="w-5 h-5 mr-1">
             <path d="M2 9h4v7H2V9zM7 5h4v11H7V5zM12 1h4v15h-4V1z" />
           </svg>
         </span>
-        <h2 className="text-xl text-gray-900 font-semibold">Signal • Breaking Changes</h2>
+        <h2 className="text-xl text-black ml-3">Signal • Breaking Changes</h2>
       </div>
-      <hr className="pt-2 mt-4" />
+      <hr className="pt-2 mt-4 border-gray-400" />
 
       {/* Render the passed child component or fallback content */}
       <div>
@@ -37,8 +37,8 @@ const VDSComponentContainer: React.FC<VDSComponentContainerProps> = ({ childComp
         )}
       </div>
 
-      <hr className="pt-2 mt-4" />
-      <div className="flex justify-center mt-3 space-x-6 text-xl text-gray-900 font-semibold">
+      <hr className="pt-2 mt-2 border-gray-400" />
+      <div className="flex justify-center mt-3 space-x-6 text-xl text-gray-500 font-semibold">
         {bottonIconSvgPaths.map((path, index) => (
           <svg
             key={index}
@@ -47,7 +47,7 @@ const VDSComponentContainer: React.FC<VDSComponentContainerProps> = ({ childComp
             stroke="currentColor"
             strokeWidth="2"
             viewBox="0 0 24 24"
-            className="w-5 h-5 hover:text-blue-500 hover:shadow-4xl transition-all duration-300 cursor-pointer"
+            className="w-8 h-8 hover:text-blue-500 hover:shadow-4xl transition-all duration-300 cursor-pointer"
             onClick={() => handleIconClick(index)} // Add the onClick handler here
           >
             <path d={path} />
