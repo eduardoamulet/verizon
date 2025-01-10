@@ -51,6 +51,11 @@
             }
           }
         ],
+        "changesVertionRecommendation" : [
+            "The color has changed, certain text may no longer be legible on this background",
+            "The border radius has changed, this may do something that looks bad somewhere",
+            "The drop shadow was added, this may produce strange effects on some designs"
+          ],
         "icon": {
           "path": "M2 10h3v6H2V10zM7 6h3v10H7V6zM12 2h3v14h-3V2z",
           "color": "text-red-600"
@@ -106,6 +111,11 @@
             }
           }
         ],
+        "changesVertionRecommendation" : [
+            "The color has changed, certain text may no longer be legible on this background",
+            "The border radius has changed, this may do something that looks bad somewhere",
+            "The drop shadow was added, this may produce strange effects on some designs"
+          ],
         "icon": {
           "path": "M2 10h3v6H2V10zM7 6h3v10H7V6zM12 2h3v14h-3V2z",
           "color": "text-red-600"
@@ -163,6 +173,11 @@
               }
             }
           ],
+          "changesVertionRecommendation" : [
+              "The color has changed, certain text may no longer be legible on this background",
+              "The border radius has changed, this may do something that looks bad somewhere",
+              "The drop shadow was added, this may produce strange effects on some designs"
+          ],
           "icon": {
             "path": "M2 10h3v6H2V10zM7 6h3v10H7V6zM12 2h3v14h-3V2z",
             "color": "text-red-600"
@@ -217,6 +232,11 @@
                 "color": "text-gray-400"
               }
             }
+          ],
+          "changesVertionRecommendation" : [
+              "The color has changed, certain text may no longer be legible on this background",
+              "The border radius has changed, this may do something that looks bad somewhere",
+              "The drop shadow was added, this may produce strange effects on some designs"
           ],
           "icon": {
             "path": "M2 10h3v6H2V10zM7 6h3v10H7V6zM12 2h3v14h-3V2z",

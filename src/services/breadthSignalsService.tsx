@@ -1,5 +1,5 @@
 
-import { VDSCorePackage, VDSComponentInfo } from "../models/breadthSignals";
+import { VDSCorePackage, VDSComponentInfo } from "../models/breakingChangesModels";
 import mockData from "../services/VDSCorePackageMockData1.json"; // Path to your JSON file
 
 // Fetch VDSCorePackage mock data to simulate the real data provided by a web service call

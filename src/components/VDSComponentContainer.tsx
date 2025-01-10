@@ -48,7 +48,7 @@ const VDSComponentContainer: React.FC<VDSComponentContainerProps> = ({ childComp
             strokeWidth="2"
             viewBox="0 0 24 24"
             className="w-8 h-8 hover:text-blue-500 hover:shadow-4xl transition-all duration-300 cursor-pointer"
-            onClick={() => handleIconClick(index)} // Add the onClick handler here
+            onClick={() => handleIconClick(index)} 
           >
             <path d={path} />
           </svg>

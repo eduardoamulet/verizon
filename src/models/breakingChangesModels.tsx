@@ -18,6 +18,7 @@ export interface VDSComponentInfo {
   versionNumber?: string;
   recomendedChange?: SignalChange;
   componentSignals?: VDSComponentSignal[],
+  changesVertionRecommendation: string[]
   icon?: IconInfo
 }
 
