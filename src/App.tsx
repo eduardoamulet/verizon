@@ -2,7 +2,7 @@ import './App.css';
 import React, {  useState } from "react";
 import VDSComponentDetail from './components/VDSComponents/details/VDSComponentDetail.';
 import VDSComponentMain from './components/VDSComponents/main/VDSComponentMain';
-import VDSComponentContainer from './components/VDSComponentContainer'; 
+import VDSComponentContainer from './components/VDSComponents/container/VDSComponentContainer'; 
 import { VDSComponentInfo} from "./models/breakingChangesModels";
 
 const App: React.FC = () => {
