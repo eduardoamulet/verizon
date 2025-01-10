@@ -50,14 +50,18 @@
               "color": "text-gray-600"
             }
           }
-        ]
+        ],
+        "icon": {
+          "path": "M2 10h3v6H2V10zM7 6h3v10H7V6zM12 2h3v14h-3V2z",
+          "color": "text-red-600"
+        }
       },
       {
         "id": 2,
         "name": "[VDS] Tag 2",
-        "status": "Critical 2",
+        "status": "Critical",
         "versionNumber": "v3.2.1",
-        "recomendedChange": "Minimal",
+        "recomendedChange": "Minor",
         "componentSignals": [
           {
             "title": "Figma Files2",
@@ -67,11 +71,11 @@
             "partialRatio2": "20",
             "totalRatio2": "50",
             "unitRatio2": "Teams",
-            "status": "Moderate",
+            "status": "Minimal",
             "icon": {
-              "path": "M2 10h3v6H2V10zM7 6h3v10H7V6zM12 2h3v14h-3V2z",
-              "color": "text-red-600"
-            }
+                "path": "M2 10h3v6H2V10zM7 6h3v10H7V6zM12 2h3v14h-3V2z",
+                 "color": "text-gray-400" 
+              }
           },
           {
             "title": "Unique Uses2",
@@ -83,9 +87,9 @@
             "unitRatio2": "Teams",
             "status": "Minimal",
             "icon": {
-              "path": "M2 10h3v6H2V10zM4 11H3V15H4zM7 6h3v10H7V6zM8 7V15H9V7zM12 2M14 3V3H13V15H14V3zM15 2v14h-3V2z",
-              "color": "text-red-600"
-            }
+                "path": "M2 10h3v6H2V10zM7 6h3v10H7V6zM12 2h3v14h-3V2z",
+                "color": "text-red-600"
+              }
           },
           {
             "title": "Gitlab Project2",
@@ -98,10 +102,14 @@
             "status": "Minimal",
             "icon": {
               "path": "M2 10h3v6H2V10zM4 11H3V15H4zM7 6h3v10H7V6zM8 7V15H9V7zM12 2M14 3V3H13V15H14V3zM15 2v14h-3V2z",
-              "color": "text-gray-400"
+              "color": "text-red-600"
             }
           }
-        ]
+        ],
+        "icon": {
+          "path": "M2 10h3v6H2V10zM7 6h3v10H7V6zM12 2h3v14h-3V2z",
+          "color": "text-red-600"
+        }
       }
     ],
     "versionedChanges": [
@@ -154,14 +162,18 @@
                 "color": "text-gray-600"
               }
             }
-          ]
+          ],
+          "icon": {
+            "path": "M2 10h3v6H2V10zM7 6h3v10H7V6zM12 2h3v14h-3V2z",
+            "color": "text-red-600"
+          }
         },
         {
           "id": 4,
           "name": "[VDS] Tag 4",
           "status": "Critical",
           "versionNumber": "v3.2.1",
-          "recomendedChange": "Minimal",
+          "recomendedChange": "Minor",
           "componentSignals": [
             {
               "title": "Figma Files4",
@@ -205,10 +217,13 @@
                 "color": "text-gray-400"
               }
             }
-          ]
+          ],
+          "icon": {
+            "path": "M2 10h3v6H2V10zM7 6h3v10H7V6zM12 2h3v14h-3V2z",
+            "color": "text-red-600"
+          }
         }
       ],
     "signalChange": "Major",
     "signalVersion": "v3.0.0"
   }
-  

@@ -1,15 +1,13 @@
 import './App.css';
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import VDSComponentDetail from './components/VDSComponentDetail.';
 import VDSComponentMain from './components/VDSComponentMain';
 import VDSComponentContainer from './components/VDSComponentContainer'; 
-import { VDSComponentInfo, VDSCorePackage } from "./models/breadthSignals";
-import { fetchVDSCorePackageData } from "../src/services/breadthSignalsService";
+import { VDSComponentInfo} from "./models/breadthSignals";
 
 const App: React.FC = () => {
   const [activeComponent, setActiveComponent] = useState<"main" | "detail">("main");
   const [selectedDetail, setSelectedDetail] = useState<VDSComponentInfo | null>(null);
-  const [VDSCorePackageData, setVDSCorePackageData] = useState<VDSCorePackage>();
 
   const handleSetDetail = (version: VDSComponentInfo) => {
     setSelectedDetail(version);
@@ -20,19 +18,6 @@ const App: React.FC = () => {
     setActiveComponent("main");
     setSelectedDetail(null);
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchVDSCorePackageData(); // Use the imported function
-        setVDSCorePackageData(data); // Properly set the fetched data in state
-      } catch (error) {
-        console.error("Error fetching breadth signals data:", error);
-      }
-    };
-
-    fetchData(); // Call the correctly named function
-  }, []);
 
   return (
     <div className="App">
