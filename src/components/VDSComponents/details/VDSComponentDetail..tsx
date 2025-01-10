@@ -4,6 +4,7 @@ import { VDSComponentInfo } from "../../../models/breakingChangesModels";
 import VDSComponentSignalCard from "./VDSComponentSignalCard";
 import VDSComponentVersionSelector from "./VDSComponentVersionSelector";
 import VDSComponentLinkIconAndText from "./VDSComponentLinkIconAndText";
+import VDSComponentChangeRecommendation from "./VDSComponentChangeRecommendation"
 
 interface VDSComponentDetailProps {
   componentInfo: VDSComponentInfo;
@@ -46,6 +47,14 @@ const VDSComponentDetail: React.FC<VDSComponentDetailProps> = ({
        ))}
       </div>
       <VDSComponentVersionSelector recommendedChange={recomendedChange || "Major"} changesVertionRecommendation = {changesVertionRecommendation}/>
+      <p className="text-sm mb-2 text-gray-600 float-left">
+        Top Changes Affecting Version Recommendation
+      </p>
+      <ul className="text-lg mt-2 space-y-2 clear-both">
+        {changesVertionRecommendation.map((change, index) => (
+          <VDSComponentChangeRecommendation key={index} text={change} />
+        ))}
+      </ul>
       <VDSComponentLinkIconAndText
         href="#"
         text="See full report"

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { SignalChange } from "../../../models/breakingChangesModels";
 import VDSComponentVersion from "./VDSComponentVersion"
-import VDSComponentChangeRecommendation from "./VDSComponentChangeRecommendation"
 
 interface VDSComponentVersionSelectorProps {
   recommendedChange: SignalChange;
@@ -36,14 +35,6 @@ const VDSComponentVersionSelector: React.FC<VDSComponentVersionSelectorProps> = 
           />
         ))}
       </div>
-      <p className="text-sm mb-2 text-gray-600 float-left">
-        Top Changes Affecting Version Recommendation
-      </p>
-      <ul className="text-lg mt-2 space-y-2 clear-both">
-        {changesVertionRecommendation.map((change, index) => (
-          <VDSComponentChangeRecommendation key={index} text={change} />
-        ))}
-      </ul>
     </div>
   );
 };
