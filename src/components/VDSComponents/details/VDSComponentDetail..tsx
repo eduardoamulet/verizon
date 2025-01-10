@@ -3,6 +3,7 @@ import React from "react";
 import { VDSComponentInfo } from "../../../models/breakingChangesModels";
 import VDSComponentSignalCard from "./VDSComponentSignalCard";
 import VDSComponentVersionSelector from "./VDSComponentVersionSelector";
+import VDSComponentLinkIconAndText from "./VDSComponentLinkIconAndText";
 
 interface VDSComponentDetailProps {
   componentInfo: VDSComponentInfo;
@@ -45,6 +46,17 @@ const VDSComponentDetail: React.FC<VDSComponentDetailProps> = ({
        ))}
       </div>
       <VDSComponentVersionSelector recommendedChange={recomendedChange || "Major"} changesVertionRecommendation = {changesVertionRecommendation}/>
+      <VDSComponentLinkIconAndText
+        href="#"
+        text="See full report"
+        onClick={(e) => {
+          e.preventDefault();
+          console.log("See full report Link clicked!");
+        }}
+      />
+      <p className="clear-both text-sm text-gray-500 mt-2">
+        Uses AI analysis, and may have some inaccuracies.
+      </p>
     </div>
   );
 };
